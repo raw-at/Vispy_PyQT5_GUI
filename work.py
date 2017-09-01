@@ -6,6 +6,8 @@ import subprocess as sp
 import vispy.app
 
 vispy.app.use_app(backend_name="PyQt5", call_reuse=True)
+
+#here we import canvasCreater call from run.py file
 from run import canvasCreater
 
 #from PyQt5.QtWidgets import (QApplication,QFrame, QCheckBox,QGridLayout, QHBoxLayout, QPushButton, QSizePolicy, QSpacerItem, QToolButton, QVBoxLayout, QWidget,
@@ -147,15 +149,13 @@ class Widget(QWidget,canvasCreater):
     def ViewItem(self):
         #sp.Popen("python3 run.py debug 1.obj",shell=True)
         #self.debug()
+        
+        #here we call the debug function of the imported class
         view = self.debug(self.measurements,"models/1.obj", False)
-        self.canvas = vispy.app.Canvas()
-        # set parent, this is optional
-        self.canvas.create_native()
-        self.canvas.native.setParent(self)
-        self.canvas.show(view)
-        # add Widget to layour
-        self.verticalLayout.addWidget(self.canvas.native)
-
+        
+        #here i just want to embed the output genereated by the self.debug to
+        #Put into the right QFrame of the Gui 
+        #see debug funtion in run.py for other references
         
     def RunItem(self):
         pass
