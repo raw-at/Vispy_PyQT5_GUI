@@ -225,11 +225,13 @@ class Widget(QWidget, canvasCreater):
                         
 
     def StopItem(self):
-        print('Stop button')
-
-    def checkBox(self):
-        print("Check Box")
-
+        for i in reversed(range(self.verticalLayoutRight.count())): 
+            self.verticalLayoutRight.itemAt(i).widget().setParent(None)
+        
+        for i in reversed(range(self.verticalLayout.count())): 
+            self.verticalLayout.itemAt(i).widget().setParent(None)
+        
+    
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
